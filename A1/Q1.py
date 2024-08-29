@@ -152,15 +152,16 @@ cv2.imwrite("output_images/Q1/Q1_bilinear_image_a.png",bi_img_a*255,[cv2.IMWRITE
 # %%
 #**************Q1 C *******************
 ############################################
-logo = bi_img_a
+logo = (1 - bi_img_a)*255 #altering the logo value
 M,N = my_image.shape[0],my_image.shape[1]
+
 logo_size = bi_img_a.shape[0]
 start_i,start_j = M-logo_size,0
 for i in range(logo_size):
     for j in range(logo_size):
         x = start_i+i
         y = start_j +j
-        p = (1-logo[i,j])*255
+        p = logo[i,j]
         my_image[x,y] = max(p,my_image[x,y])
 
 
