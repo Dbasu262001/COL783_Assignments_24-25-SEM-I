@@ -105,17 +105,19 @@ def bilater_filter(image1:np.array,sigma_s,sigma_r):
     size = 2*sigma_s +1
     gauss_spatial = gaussian_kernel_2D(size=size,sigma=sigma_s)
     padding_size = size//2
-    padded_image = np.pad(image1,padding_size)
+    padded_image = np.pad(image1,padding_size,mode='reflect')
     image = np.zeros(image1.shape)
     m,n = image.shape[0],image.shape[1]
     for i in range(m):
         for j in range(n):
             f_q = padded_image[i:i+size,j:j+size]
-            fp_fq = padded_image[i:i+size,j:j+size] - image[i,j]
+            fp_fq = padded_image[i + padding_size, j + padding_size] - padded_image[i:i+size,j:j+size]
             gauss_range = np.exp(-0.5*np.square(fp_fq)/np.square(sigma_r))
-            gaussian_range = gauss_range/np.sum(gauss_range)
-            image[i,j] =np.sum(gauss_spatial*f_q*gaussian_range)
+            weights = gauss_range * gauss_spatial
+            
+            image[i,j] =np.sum(f_q * weights /np.sum(weights))
     return image 
+
 
 
     
