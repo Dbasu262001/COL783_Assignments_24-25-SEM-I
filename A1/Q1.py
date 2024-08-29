@@ -9,7 +9,7 @@ def read_image(filename : str)-> np.array:
 
 # converting image to grayscale image
 def get_graycale(image:np.array):
-    weights= [0.3, 0.58, 0.12]
+    weights= [0.3, 0.51, 0.11]
     gray = np.dot(img[..., :3], weights)
     return np.round(gray).astype(np.int16)
 
@@ -18,7 +18,7 @@ img.shape
 
 # %%
 my_image = cv2.imread("data/eagle.jpeg", cv2.IMREAD_COLOR)
-my_image = np.dot(my_image[..., :3], [0.3, 0.58, 0.12])
+my_image = np.dot(my_image[..., :3], [0.3, 0.59, 0.11])
 my_image = np.round(my_image).astype(np.uint8)
 M = max(my_image.shape[0],my_image.shape[1])
 Scaling_factor = int(.25*M)
