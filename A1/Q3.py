@@ -121,7 +121,7 @@ def bilater_filter(image1:np.array,sigma_s,sigma_r):
     
 
 # %%
-sigma_pairs=[[2,2],[2,8],[2,8]]
+sigma_pairs=[[2,2],[2,8],[5,8]]
 for i in range(3):
     sig_s = sigma_pairs[i][0]
     sig_r = sigma_pairs[i][1]
@@ -148,7 +148,7 @@ for x in sigma_list:
     low_pass = bilater_filter(f_bar,sigma_s=sigma_s,sigma_r=sigma_r)
     hig_pass = f_bar - low_pass
     low_pass_reduced = low_pass/np.min(low_pass)
-    bilateral_recomp_img = np.exp( hig_pass + low_pass)
+    bilateral_recomp_img = np.exp( hig_pass + low_pass_reduced)
     display_image = (255*(bilateral_recomp_img - np.min(bilateral_recomp_img))/ (np.max(bilateral_recomp_img) - np.min(bilateral_recomp_img)) ).astype(np.uint8)
     lst = str(sigma_s) +'_'+str(sigma_r)+".png"
     cv2.imwrite('output_images/Q3/Q3_d_exp_recomp_img'+lst, display_image,[cv2.IMWRITE_PNG_COMPRESSION, 0])
@@ -162,7 +162,7 @@ for x in sigma_list:
     low_pass = bilater_filter(f_bar,sigma_s=sigma_s,sigma_r=sigma_r)
     hig_pass = f_bar - low_pass
     low_pass_reduced = low_pass/np.min(low_pass)
-    bilateral_recomp_img = hig_pass + low_pass
+    bilateral_recomp_img = hig_pass + low_pass_reduced
     display_image = (255*(bilateral_recomp_img - np.min(bilateral_recomp_img))/ (np.max(bilateral_recomp_img) - np.min(bilateral_recomp_img)) ).astype(np.uint8)
     lst = str(sigma_s) +'_'+str(sigma_r)+".png"
     cv2.imwrite('output_images/Q3/Q3_d_log_recomp_img'+lst, display_image,[cv2.IMWRITE_PNG_COMPRESSION, 0])
