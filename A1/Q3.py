@@ -115,7 +115,7 @@ def bilater_filter(image1:np.array,sigma_s,sigma_r):
             gauss_range = np.exp(-0.5*np.square(fp_fq)/np.square(sigma_r))
             weights = gauss_range * gauss_spatial
             
-            image[i,j] =np.sum(f_q * weights /np.sum(weights))
+            image[i,j] = np.sum((f_q * weights) /np.sum(weights))
     return image 
 
 

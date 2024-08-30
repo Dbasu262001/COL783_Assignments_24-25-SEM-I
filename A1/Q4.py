@@ -128,9 +128,9 @@ hsi_image[:, :, 2] = filtered_intensity/255
 rgb_from_hsi = hsi_to_rgb_image(hsi_image)
 
 # %%
-cv2.imshow('Q1(a) sep background & foreground', rgb_from_hsi.astype(np.uint8))
-cv2.waitKey(7500)
-cv2.destroyAllWindows()
+# cv2.imshow('Q1(a) sep background & foreground', rgb_from_hsi.astype(np.uint8))
+# cv2.waitKey(7500)
+# cv2.destroyAllWindows()
 
 # %%
 #Q4 C***********
@@ -187,18 +187,18 @@ def gamma_correction(image:np.array,gamma:float):
 
 # %%
 I_reduced_gamma = gamma_correction(I_reduced_rgb,(1/2.2))
-cv2.imwrite('output_images/Q4/Q4_c_I_reduced_gamma.png', I_reduced_gamma.astype(np.uint8))
+cv2.imwrite('output_images/Q4/Q4_d_I_reduced_gamma.png', I_reduced_gamma.astype(np.uint8))
 
 # %%
 R_reduced_gamma = gamma_correction(R_reduced_image,(1/2.2))
-cv2.imwrite('output_images/Q4/Q4_c_R_reduced_gamma.png', R_reduced_gamma.astype(np.uint8))
+cv2.imwrite('output_images/Q4/Q4_d_R_reduced_gamma.png', R_reduced_gamma.astype(np.uint8))
 
 # %%
 G_reduced_gamma = gamma_correction(G_reduced_image,(1/2.2))
-cv2.imwrite('output_images/Q4/Q4_c_G_reduced_gamma.png', G_reduced_gamma.astype(np.uint8))
+cv2.imwrite('output_images/Q4/Q4_d_G_reduced_gamma.png', G_reduced_gamma.astype(np.uint8))
 
 # %%
 B_reduced_gamma = gamma_correction(B_reduced_image,(1/2.2))
-cv2.imwrite('output_images/Q4/Q4_c_B_reduced_gamma.png', B_reduced_gamma.astype(np.uint8))
+cv2.imwrite('output_images/Q4/Q4_d_B_reduced_gamma.png', B_reduced_gamma.astype(np.uint8))
 
 
